@@ -1,0 +1,8 @@
+http://localhost:3000/graphql?query={degrees(institution:%22Stanford%22){object_id{first_name,last_name,allRelationships{title,relationship_object_id{
+name,
+allFundingRounds{funded_at,funding_round_type},
+allFunds{name},
+allFundeds{created_at,updated_at},
+ipo{source_url,source_description},
+allMilestones{description},
+allOffices{address1,address2}}}}}}
