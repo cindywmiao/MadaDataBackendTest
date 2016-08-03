@@ -118,13 +118,13 @@ const InverstmentType = new graphql.GraphQLObjectType({
     funded_object_id: {
       type: ObjectType,
       resolve: function (parent, args) {
-        return data.cb_objects.findOne({ where: { id: parent.object_id}});
+        return data.cb_objects.findOne({ where: { id: parent.funded_object_id}});
       }
     },
     inverstor_object_id: {
       type: ObjectType,
       resolve: function (parent, args) {
-        return data.cb_objects.findOne({ where: { id: parent.object_id}});
+        return data.cb_objects.findOne({ where: { id: parent.inverstor_object_id}});
       }
     },
     created_at: { type: graphql.GraphQLString },
@@ -405,7 +405,7 @@ var schema = new graphql.GraphQLSchema({
         resolve: function (_, args) { return data.cb_offices.findById(args.id);}
       },
       people: {
-        type: PersonType,
+        type: new graphql.GraphQLString(PersonType),
         args: { first_name: { type: graphql.GraphQLString }},
         resolve: function (_, args) { return data.cb_people.findAll({ where: { first_name: args.first_name}});}
       }
